@@ -33,7 +33,7 @@ app = Flask(__name__)
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'gif', 'jpeg'])
 
 #　拡張子が適切かどうかをチェック
-def allwed_file(filename):
+def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # URL にアクセスがあった場合の挙動の設定
@@ -47,7 +47,7 @@ def predicts():
         # データの取り出し
         file = request.files['filename']
         # ファイルのチェック
-        if file and allwed_file(file.filename):
+        if file and allowed_file(file.filename):
 
             #　画像ファイルに対する処理
             #　画像書き込み用バッファを確保
